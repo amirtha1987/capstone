@@ -29,13 +29,21 @@ function CreatePets() {
   const navigate = useNavigate()
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:3001/pet/create-pet", { name, age, species, breed, special_care_required, imageUrl })
-      .then(result=> {
-        navigate('/')
+    axios
+      .post("https://backend-capstone-4-3jx1.onrender.com/create-pet", {
+        name,
+        age,
+        species,
+        breed,
+        special_care_required,
+        imageUrl,
+      })
+      .then((result) => {
+        navigate("/");
         console.log(result.data);
         alert("pet created");
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
   return (
     <div className="d-flex justify-content-center align-item-center vh-100">
