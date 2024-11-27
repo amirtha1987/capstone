@@ -13,10 +13,13 @@ function login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/auth/login", { username, password })
+      .post("https://backend-capstone-4-3jx1.onrender.com/auth/login", {
+        username,
+        password,
+      })
       .then((result) => {
-        window.localStorage.setItem("id",result.data.id)
-        navigate('/');
+        window.localStorage.setItem("id", result.data.id);
+        navigate("/");
         console.log(result);
       })
       .catch((err) => console.log(err));

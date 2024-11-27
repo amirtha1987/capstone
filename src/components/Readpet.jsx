@@ -6,14 +6,14 @@ function Readpet() {
   const userId = window.localStorage.getItem('id')
   const [savedPets, setSavedPets] = useState([])
 
-  const [pet, setPet] = useState([])
+  const [pets, setPets] = useState([])
   
   
   useEffect(() => {
     const getPet = () => {
       axios.get('http://localhost:3001/pet/pet-by-id/' + id)
         .then(result => {
-          setPet(result.data)
+          setPets(result.data)
         }).catch(err => console.log(err))
     }
     const fetchSavedPets = () => {
@@ -29,40 +29,41 @@ function Readpet() {
 
 
   const savedPet = (petId) => {
-    axios.put("http://localhost:3001/pet", { userId , petId })
-      .then(result => (
-        setSavedPets(result.data.savedPets)
-      
-      ))
+    axios
+      .put("https://backend-capstone-4-3jx1.onrender.com/pet", {
+        userId,
+        petId,
+      })
+      .then((result) => setSavedPets(result.data.savedPets))
       .catch((err) => console.log(err));
   }
-  //const isPetSaved = (id) => savedPets.includes(id);
+  const isPetSaved = (id) => savedPets.includes(id);
    
 
-  function isPetSaved(petId) {
-    if (savedPets && savedPets.includes) {
-      return savedPets.includes(petId);
-    }
-    return false;
-  }
+  // function isPetSaved(petId) {
+  //   if (savedPets && savedPets.includes) {
+  //     return savedPets.includes(petId);
+  //   }
+  //   return false;
+  // }
 
  
   return (
     <div className="d-flex justify-content-center container mt-3">
       <div className="p-2">
-        <img src={pet.imageUrl} alt="" />
+        <img src={pets.imageUrl} alt="" />
       </div>
       <div className='p-2'>
         <h2>{pet.name}</h2>
         <button className='btn btn-warning'
-          onClick={() => savedPet(pet._id)}
-        disabled = {isPetSaved(pet._id)}>
-          {isPetSaved(pet._id) ? "Saved" : "Save"}
+          onClick={() => savedPet(pets._id)}
+        disabled = {isPetSaved(pets._id)}>
+          {isPetSaved(pets._id) ? "Saved" : "Save"}
         </button>
         <h3>Age</h3>
-        <p>{pet.age}</p>
+        <p>{pets.age}</p>
         <h3>species</h3>
-        <p>{pet.species}</p>
+        <p>{pets.species}</p>
       </div>
     </div>
   );

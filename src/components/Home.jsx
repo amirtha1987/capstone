@@ -9,10 +9,12 @@ import { Link } from 'react-router-dom';
 function Home() {
   const [pets, setPets] = useState([])
   useEffect(() => {
-    axios.get('http://localhost:3001/pet/pets')
-      .then(pets => {
-        setPets(pets.data)
-      }).catch(err => console.log(err))
+    axios
+      .get("https://backend-capstone-4-3jx1.onrender.com/pet/pets")
+      .then((pets) => {
+        setPets(pets.data);
+      })
+      .catch((err) => console.log(err));
   }, [])
   return (
     <div className='d-flex justify-content-center'>

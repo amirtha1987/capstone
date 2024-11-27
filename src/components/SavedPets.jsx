@@ -25,7 +25,9 @@ function SavedPets() {
   }
   useEffect(() => {
     axios
-      .get("http://localhost:3001/pet/user-pets/"+userId)
+      .get(
+        "https://backend-capstone-4-3jx1.onrender.com/pet/user-pets/" + userId
+      )
       .then((pets) => {
         setsavedPets(pets.data);
       })
