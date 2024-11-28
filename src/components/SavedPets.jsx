@@ -36,7 +36,7 @@ function SavedPets() {
   return (
     <div className="d-flex justify-content-center">
       <div>
-        <h2> Saved Pets</h2>
+        <h2>SAVED PETS</h2>
         {savedpets.map((pet) => (
           <div key={pet._id} className="mt-4 p-3 border">
             <Link to={`/read-pet/${pet._id}`} className="text-decoration-none">
