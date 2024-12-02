@@ -30,7 +30,7 @@ const Registration = () => {
         <h3>Register</h3>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="username">Username</label>
+            <label>Username</label>
             <input
               type="text"
               placeholder="Enter Username "
@@ -38,7 +38,7 @@ const Registration = () => {
               onChange={(e) => setUsername(e.target.value)}
             ></input>
 
-            <label htmlFor="password">Password</label>
+            <label>Password</label>
             <input
               type="password"
               placeholder="Enter password "
