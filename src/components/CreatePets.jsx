@@ -31,7 +31,7 @@ function CreatePets() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("https://backend-capstone-8-81l3.onrender.com/create-pets", {
+      .post("https://backend-capstone-8-81l3.onrender.com/create-pet", {
         name,
         age,
         species,
