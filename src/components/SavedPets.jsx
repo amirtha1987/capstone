@@ -26,7 +26,7 @@ function SavedPets() {
   useEffect(() => {
     axios
       .get(
-        "https://backend-capstone-4-3jx1.onrender.com/pet/user-pets/" + userId
+        "https://backend-capstone-8-81l3.onrender.com/pet/user-pets/" + userId
       )
       .then((pets) => {
         setsavedPets(pets.data);

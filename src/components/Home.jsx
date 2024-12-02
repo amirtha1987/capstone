@@ -10,7 +10,7 @@ function Home() {
   const [pets, setPets] = useState([])
   useEffect(() => {
     axios
-      .get("https://backend-capstone-4-3jx1.onrender.com/pet/pets")
+      .get("https://backend-capstone-8-81l3.onrender.com/pet/pets")
       .then((pets) => {
         setPets(pets.data);
       })

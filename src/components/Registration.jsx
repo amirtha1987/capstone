@@ -12,7 +12,7 @@ const Registration = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         axios
-          .post("https://backend-capstone-4-3jx1.onrender.com/auth/register", {
+          .post("https://backend-capstone-8-81l3.onrender.com/auth/register", {
             username,
             password,
           })

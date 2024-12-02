@@ -7,7 +7,7 @@ function Nav() {
   const handleLogout = () => {
     window.localStorage.clear()
     axios
-      .get("https://backend-capstone-4-3jx1.onrender.com/auth/logout")
+      .get("https://backend-capstone-8-81l3.onrender.com/auth/logout")
       .then((result) => navigate("/"))
       .catch((err) => console.log(err));
   }
