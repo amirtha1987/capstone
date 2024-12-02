@@ -1,35 +1,24 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { NavigationType, useNavigate } from 'react-router-dom'
-
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CreatePets() {
-  const [name, setName] = useState('')
-  const [age, setAge] = useState('')
-    const [species, setSpecies] = useState('')
-  const [breed, setBreed] = useState('')
-  const [special_care_required, setSpecial_care_required] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
-  //const [userId, setUserId] = useState(window.localStorage.getItem("id"))
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [species, setSpecies] = useState("");
+  const [breed, setBreed] = useState("");
+  const [special_care_required, setSpecial_care_required] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
-  // const [pet, setPet] = useState({
-  //   name: req.body.name,
-  //   age: req.body.age,
-  //   species: req.body.species,
-  //   breed: req.body.breed,
-  //   special_care_required: req.body.special_care_required,
-  //   imageUrl: req.body.imageUrl,
-  //   userId: window.localStorage.getItem("id"),
-  // });   
-  
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target
-  //   setPet({...pet, [name]: value})
-  // }
-  
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!name || !age || !species || !breed || !imageUrl) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
     axios
       .post("https://backend-capstone-8-81l3.onrender.com/create-pet", {
         name,
@@ -40,85 +29,99 @@ function CreatePets() {
         imageUrl,
       })
       .then((result) => {
+        setName("");
+        setAge("");
+        setSpecies("");
+        setBreed("");
+        setSpecial_care_required("");
+        setImageUrl("");
+        alert("Pet created successfully!");
         navigate("/");
-        console.log(result.data);
-        alert("pet created");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.error(err);
+        alert("Failed to create pet. Please try again.");
+      });
   };
+
   return (
-    <div className="d-flex justify-content-center align-item-center vh-100">
+    <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="p-3 border border-1 w-25">
         <h3>Create Pet</h3>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name">name </label>
+            <label htmlFor="name">Name</label>
             <input
+              id="name"
               type="text"
               placeholder="Enter Name"
               className="form-control"
-              onChange={(event) => setName(event.target.value)}
-            ></input>
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <div>
             <label htmlFor="age">Age</label>
             <input
-              type="Number"
+              id="age"
+              type="number"
               placeholder="Enter Age"
               className="form-control"
-              onChange={(event) => setAge(event.target.value)}
-            ></input>
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+            />
           </div>
           <div>
             <label htmlFor="species">Species</label>
             <input
+              id="species"
               type="text"
-              placeholder="Enter species"
+              placeholder="Enter Species"
               className="form-control"
-              onChange={(event) => setSpecies(event.target.value)}
-            ></input>
+              value={species}
+              onChange={(e) => setSpecies(e.target.value)}
+            />
           </div>
           <div>
             <label htmlFor="breed">Breed</label>
             <input
+              id="breed"
               type="text"
-              placeholder="Enter breed"
+              placeholder="Enter Breed"
               className="form-control"
-              onChange={(event) => setBreed(event.target.value)}
-            ></input>
+              value={breed}
+              onChange={(e) => setBreed(e.target.value)}
+            />
           </div>
           <div>
             <label htmlFor="special_care_required">Special Care Required</label>
             <input
+              id="special_care_required"
               type="text"
-              placeholder="Enter special care Required"
+              placeholder="Enter Special Care Required"
               className="form-control"
-              onChange={(event) => setSpecial_care_required(event.target.value)}
-            ></input>
+              value={special_care_required}
+              onChange={(e) => setSpecial_care_required(e.target.value)}
+            />
           </div>
           <div>
-            <label htmlFor="imageUrl">ImageUrl </label>
+            <label htmlFor="imageUrl">Image URL</label>
             <input
+              id="imageUrl"
               type="text"
-              placeholder="Enter Image url"
+              placeholder="Enter Image URL"
               className="form-control"
-              onChange={(event) => setImageUrl(event.target.value)}
-            ></input>
-
-            {/* <label htmlFor="UserId">UserId </label>
-            <input
-              type="text"
-              placeholder="Enter userid"
-              className="form-control"
-              onChange={(event) => setUserId(event.target.value)}
-            ></input> */}
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+            />
           </div>
-
-          <button className="mt-1 btn btn-success w-100">Submit</button>
+          <button type="submit" className="mt-2 btn btn-success w-100">
+            Submit
+          </button>
         </form>
       </div>
     </div>
   );
 }
 
-export default CreatePets
+export default CreatePets;
