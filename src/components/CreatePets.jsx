@@ -7,7 +7,7 @@ function CreatePets() {
   const [age, setAge] = useState("");
   const [species, setSpecies] = useState("");
   const [breed, setBreed] = useState("");
-  const [special_care_required, setSpecial_care_required] = useState("");
+  const [specialCareRequired, setSpecialCareRequired] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
   const navigate = useNavigate();
@@ -19,21 +19,20 @@ function CreatePets() {
       return;
     }
 
-    axios
-      .post("https://backend-capstone-8-81l3.onrender.com/api/create-pet", {
-        name,
-        age,
-        species,
-        breed,
-        special_care_required,
-        imageUrl,
-      })
+    axios.post("https://backend-capstone-8-81l3.onrender.com/api/create-pet", {
+      name,
+      age,
+      species,
+      breed,
+      specialCareRequired,
+      imageUrl,
+    })
       .then((result) => {
         setName("");
         setAge("");
         setSpecies("");
         setBreed("");
-        setSpecial_care_required("");
+        setSpecialCareRequired("");
         setImageUrl("");
         alert("Pet created successfully!");
         navigate("/");
@@ -94,14 +93,14 @@ function CreatePets() {
             />
           </div>
           <div>
-            <label htmlFor="special_care_required">Special Care Required</label>
+            <label htmlFor="specialCareRequired">Special Care Required</label>
             <input
-              id="special_care_required"
+              id="specialCareRequired"
               type="text"
               placeholder="Enter Special Care Required"
               className="form-control"
               value={special_care_required}
-              onChange={(e) => setSpecial_care_required(e.target.value)}
+              onChange={(e) => setSpecialCareRequired(e.target.value)}
             />
           </div>
           <div>
