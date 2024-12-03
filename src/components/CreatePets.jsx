@@ -20,7 +20,7 @@ function CreatePets() {
     }
 
     axios
-      .post("https://backend-capstone-8-81l3.onrender.com/create-pet", {
+      .post("https://backend-capstone-8-81l3.onrender.com/api/create-pet", {
         name,
         age,
         species,
