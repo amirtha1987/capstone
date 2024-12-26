@@ -2,20 +2,48 @@ import React, { useState } from "react";
 import axios from "axios";
 
 
-const CreatePet = () => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-   const [species, setSpecies] = useState("");
-   const [breed, setBreed] = useState("");
-   const [specialCareRequired, setSpecialCareRequired] = useState("");
-   const [imageUrl, setImageUrl] = useState("");
+const CreatePet =() =>  {
+  const [formData, setFormData] = useState({
+    name: "",
+    age: "",
+    species: "",
+    breed: "",
+    specialCareRequired: "",
+    imageUrl: ""
 
-  
+  });
 
-  const handleSubmit = (event) => {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setFormData({ ...formData, [name]: value });
+  }
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('pet created:', { name, age, species, breed, specialCareRequired, imageUrl });
+    try {
+      const response = await axios.post(`${API_BASE_URL}/pets`, formData);
+      alert('Pet Created Successfully');
+      console.log(response.data);
+      setFormData({
+        name: "",
+        age: "",
+        species: "",
+        breed: "",
+        specialCareRequired: "",
+        imageUrl: ""
+        
+      });
+    }
+    catch (error) {
+      console.error('Error creating pet:', error);
+      alert('Failed to create pet');
+      
+    }
   };
+
+
       return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="p-3 border border-1 w-25">
@@ -27,7 +55,7 @@ const CreatePet = () => {
               type="text"
               placeholder="Enter Name"
               name="name"
-              value={pet.name}
+              value={formData.name}
               onChange={handleChange}
               required
             />
@@ -39,7 +67,7 @@ const CreatePet = () => {
               type="number"
               placeholder="Age"
               name="age"
-              value={pet.age}
+              value={formData.age}
               onChange={handleChange}
               required
             />
@@ -51,7 +79,7 @@ const CreatePet = () => {
               type="text"
               placeholder="Enter species"
               name="species"
-              value={pet.species}
+              value={formData.species}
               onChange={handleChange}
               required
             />
@@ -62,7 +90,7 @@ const CreatePet = () => {
               type="text"
               placeholder="Enter Breed"
               name="breed"
-              value={pet.breed}
+              value={formData.breed}
               onChange={handleChange}
               required
             />
@@ -73,19 +101,19 @@ const CreatePet = () => {
               type="text"
               placeholder="Special care required"
               name="specialCareRequired"
-              value={pet.specialCareRequired}
+              value={formData.specialCareRequired}
               onChange={handleChange}
               required
             />
           </div>
 
           <div>
-            <label><ImageUrl></ImageUrl>:</label>
+            <label>ImageURL:</label>
             <input
               type="text"
               placeholder="Enter ImageUrl"
               name="imageUrl"
-              value={pet.imageUrl}
+              value={formData.imageUrl}
               onChange={handleChange}
               required
             />
@@ -101,3 +129,5 @@ const CreatePet = () => {
 }
 
 export default CreatePet;
+
+  

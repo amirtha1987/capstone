@@ -26,7 +26,7 @@ function Nav() {
                   to="/pet/create-pets"
                   aria-current="page"
                 >
-                  Create
+                  Create Pets
                 </Link>
               </li>
               <li className="nav-item">
