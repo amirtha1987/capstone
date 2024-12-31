@@ -39,7 +39,7 @@ function CreatePet() {
               type="text"
               placeholder="Enter Name"
               name="name"
-              value={formData.name}
+              value={pet.name}
               onChange={handleChange}
               required
             />
@@ -51,7 +51,7 @@ function CreatePet() {
               type="number"
               placeholder="Age"
               name="age"
-              value={formData.age}
+              value={pet.age}
               onChange={handleChange}
               required
             />
@@ -63,7 +63,7 @@ function CreatePet() {
               type="text"
               placeholder="Enter species"
               name="species"
-              value={formData.species}
+              value={pet.species}
               onChange={handleChange}
               required
             />
@@ -74,7 +74,7 @@ function CreatePet() {
               type="text"
               placeholder="Enter Breed"
               name="breed"
-              value={formData.breed}
+              value={pet.breed}
               onChange={handleChange}
               required
             />
@@ -85,7 +85,7 @@ function CreatePet() {
               type="text"
               placeholder="Special care required"
               name="specialCareRequired"
-              value={formData.specialCareRequired}
+              value={pet.specialCareRequired}
               onChange={handleChange}
               required
             />
@@ -97,7 +97,7 @@ function CreatePet() {
               type="text"
               placeholder="Enter ImageUrl"
               name="imageUrl"
-              value={formData.imageUrl}
+              value={pet.imageUrl}
               onChange={handleChange}
               required
             />
