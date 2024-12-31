@@ -17,7 +17,7 @@ function CreatePet() {
 
   const handleChange = (event) => {
     const { name, value } = event.target
-    setFormData({ ...pet, [name]: value });
+    setPet({ ...pet, [name]: value });
   }
 
   const handleSubmit = (event) => {
