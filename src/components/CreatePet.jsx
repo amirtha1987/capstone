@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 function CreatePet() {
-  const [formData, setFormData] = useState({
+  const [pet, setPet] = useState({
     name: "",
     age: "",
     species: "",
@@ -17,12 +17,12 @@ function CreatePet() {
 
   const handleChange = (event) => {
     const { name, value } = event.target
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...pet, [name]: value });
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    axios.post(`${API_BASE_URL/pet/create-pet}`, formData)
+    axios.post(`${API_BASE_URL/pet/create-pet}`, pet)
       .then(result => {
       console.log(result.data)
       alert("pet created")
