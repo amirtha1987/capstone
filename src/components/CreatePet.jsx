@@ -23,7 +23,7 @@ const CreatePet =() =>  {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${API_BASE_URL/pet/create-pet}`, formData);
+      const response = await axios.post(`${API_BASE_URL/pet/create-pets}`, formData);
       alert('Pet Created Successfully');
       console.log(response.data);
       setFormData({

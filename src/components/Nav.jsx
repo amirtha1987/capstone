@@ -22,8 +22,7 @@ function Nav() {
             <ul className="navbar-nav ms-2 mr-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link
-                  className="nav-link text-white"
-                  to="/pet/create-pets"
+                  className="nav-link text-white" to="/pet/create-pets"
                   aria-current="page"
                 >
                   Create Pets
