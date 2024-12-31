@@ -20,31 +20,15 @@ function CreatePet() {
     setFormData({ ...formData, [name]: value });
   }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post(`${API_BASE_URL/pet/create-pets}`, formData);
-      alert('Pet Created Successfully');
-      console.log(response.data);
-      setFormData({
-        name: "",
-        age: "",
-        species: "",
-        breed: "",
-        specialCareRequired: "",
-        imageUrl: ""
-        
-      });
-    }
-    catch (error) {
-      console.error('Error creating pet:', error);
-      alert('Failed to create pet');
-      
-    }
-  };
-
-
-      return (
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    axios.post(`${API_BASE_URL / pet / create - pet}`, formData)
+      .then(result => {
+      console.log(result.data)
+      alert("pet created")
+       }).catch(err => console.log(err))
+     }
+  return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="p-3 border border-1 w-25">
         <h3>Create Pet</h3>
