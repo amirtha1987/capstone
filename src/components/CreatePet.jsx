@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 
-const CreatePet =() =>  {
+function CreatePet() {
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -11,7 +11,7 @@ const CreatePet =() =>  {
     specialCareRequired: "",
     imageUrl: ""
 
-  });
+  })
 
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
