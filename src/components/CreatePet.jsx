@@ -22,7 +22,7 @@ function CreatePet() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    axios.post(`${API_BASE_URL / pet / create - pet}`, formData)
+    axios.post(`${API_BASE_URL/pet/create-pet}`, formData)
       .then(result => {
       console.log(result.data)
       alert("pet created")
