@@ -30,7 +30,7 @@ function Readpet() {
 
   const savedPet = (petId) => {
     axios
-      .put("https://backend-capstone-8-81l3.onrender.com/pet", {
+      .put("https://capstone-1-9v6o.onrender.com/pet", {
         userId,
         petId,
       })

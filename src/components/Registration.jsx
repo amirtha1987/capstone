@@ -22,7 +22,7 @@ const Registration = () => {
     setLoading(true);
     setError('');
     axios
-      .post("https://backend-capstone-8-81l3.onrender.com/auth/register", {
+      .post("https://capstone-1-9v6o.onrender.com/auth/register", {
         username,
         password,
       })
@@ -33,7 +33,7 @@ const Registration = () => {
       })
       .catch((err) => {
         setLoading(false);
-        setError('An error occured during registration.please try again');
+        setError("An error occured during registration.please try again");
         console.log(err);
       });
     }
